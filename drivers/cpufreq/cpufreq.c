@@ -2263,12 +2263,18 @@ static int cpufreq_set_policy(struct cpufreq_policy *policy,
 	int ret;
 
 #ifdef CONFIG_ARCH_MSM8998
+<<<<<<< HEAD
 	if (!disable_underclock) {
 		if (new_policy->cpu > 3) {
 			if (new_policy->max > UNDERCLK_MAX_PERFCL)
 				new_policy->max = UNDERCLK_MAX_PERFCL;
 		}
 	}
+=======
+	if (enable_underclock && new_policy->cpu > 3 &&
+	    new_policy->max > UNDERCLK_MAX_PERFCL)
+		new_policy->max = UNDERCLK_MAX_PERFCL;
+>>>>>>> 4bf6f38... cpufreq: Combine three separate if statements into one
 #endif
 
 	pr_debug("setting new policy for CPU %u: %u - %u kHz\n",
