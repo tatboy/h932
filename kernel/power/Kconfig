@@ -326,12 +326,6 @@ config PM_GENERIC_DOMAINS_OF
 config CPU_PM
 	bool
 
-<<<<<<< HEAD
-config	BOEFFLA_WL_BLOCKER
-		bool "Boeffla generic wakelock blocker driver"
-		depends on PM
-		default N
-=======
 config QUICK_WAKEUP
 	bool "Quick wakeup"
 	depends on SUSPEND
@@ -339,4 +333,8 @@ config QUICK_WAKEUP
 	---help---
 	  Allow kernel driver to do periodic jobs without resuming the full system
 	  This option can increase battery life on android powered smartphone.
->>>>>>> d0d4888... power: quickwakeup: initial driver
+
+config	BOEFFLA_WL_BLOCKER
+		bool "Boeffla generic wakelock blocker driver"
+		depends on PM
+		default N
