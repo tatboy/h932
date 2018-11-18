@@ -31,7 +31,12 @@
 #include <linux/compiler.h>
 #include <linux/moduleparam.h>
 #include <linux/wakeup_reason.h>
+<<<<<<< HEAD
+=======
 #include <linux/cpufreq.h>
+#include <linux/platform_device.h>
+#include "../../drivers/pinctrl/qcom/pinctrl-msm.h"
+>>>>>>> 86cfa4b... qcom-cpufreq: Boost all online CPUs when exiting suspend
 
 #include "power.h"
 

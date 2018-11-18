@@ -50,6 +50,46 @@ struct cpufreq_suspend_t {
 
 static DEFINE_PER_CPU(struct cpufreq_suspend_t, suspend_data);
 
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_CPU_FREQ_ONEPLUS_QOS
+#define LITTLE_CPU_QOS_FREQ 1900800
+#define BIG_CPU_QOS_FREQ    2361600
+
+unsigned int cluster1_first_cpu;
+static bool qos_cpufreq_flag;
+static bool c1_cpufreq_update_flag;
+static void c0_cpufreq_limit(struct work_struct *work);
+static void c1_cpufreq_limit(struct work_struct *work);
+static struct workqueue_struct *qos_cpufreq_work_queue;
+static DECLARE_WORK(c0_cpufreq_limit_work, c0_cpufreq_limit);
+static DECLARE_WORK(c1_cpufreq_limit_work, c1_cpufreq_limit);
+struct qos_request_value {
+	bool flag;
+	unsigned int max_cpufreq;
+	unsigned int min_cpufreq;
+};
+static struct qos_request_value c0_qos_request_value = {
+	.flag = false,
+	.max_cpufreq = INT_MAX,
+	.min_cpufreq = MIN_CPUFREQ,
+};
+static struct qos_request_value c1_qos_request_value = {
+	.flag = false,
+	.max_cpufreq = INT_MAX,
+	.min_cpufreq = MIN_CPUFREQ,
+};
+#endif
+
+static int set_cpu_freq_raw(int cpu, unsigned long rate, bool boost_src)
+{
+	if (is_boosted && !boost_src)
+		return 0;
+
+	return clk_set_rate(cpu_clk[cpu], rate);
+}
+
+>>>>>>> 86cfa4b... qcom-cpufreq: Boost all online CPUs when exiting suspend
 static int set_cpu_freq(struct cpufreq_policy *policy, unsigned int new_freq,
 			unsigned int index)
 {
