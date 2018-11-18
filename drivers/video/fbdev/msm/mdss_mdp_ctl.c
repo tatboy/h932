@@ -27,13 +27,10 @@
 #include "mdss_mdp.h"
 #include "mdss_mdp_trace.h"
 #include "mdss_debug.h"
-<<<<<<< HEAD
+#include "mdss_dsi.h"
 #if defined(CONFIG_LGE_INTERVAL_MONITOR)
 #include "lge/lge_interval_monitor.h"
 #endif
-=======
-#include "mdss_dsi.h"
->>>>>>> 056c17e... msm: mdss: Power on display asynchronously as early as possible
 
 #define MDSS_MDP_QSEED3_VER_DOWNSCALE_LIM 2
 #define NUM_MIXERCFG_REGS 3
