@@ -95,42 +95,7 @@
 #include <trace/events/sched.h>
 #include "walt.h"
 
-<<<<<<< HEAD
-=======
-static atomic_t __su_instances;
-
-int su_instances(void)
-{
-	return atomic_read(&__su_instances);
-}
-
-bool su_running(void)
-{
-	return su_instances() > 0;
-}
-
-bool su_visible(void)
-{
-	kuid_t uid = current_uid();
-	if (su_running())
-		return true;
-	if (uid_eq(uid, GLOBAL_ROOT_UID) || uid_eq(uid, GLOBAL_SYSTEM_UID))
-		return true;
-	return false;
-}
-
-void su_exec(void)
-{
-	atomic_inc(&__su_instances);
-}
-
-void su_exit(void)
-{
-	atomic_dec(&__su_instances);
-}
-
 #ifdef CONFIG_SMP
->>>>>>> 34b9fe8... sched/core: fix have_sched_energy_data build warning
 static bool have_sched_energy_data(void);
 #endif
 
